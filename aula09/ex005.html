@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiros passos | DOM</title>
+    <style>
+        body{
+            background-color: lightcoral;
+            color: white;
+            font: normal 18pt Arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciando os estudos de DOM</h1>
+    <p>Aqui vai o resultado</p>
+    <p>Aprendendo a usar o <strong>DOM</strong> em JavaScript</p>
+    <div id="msg">Clique em mim</div>
+    <section><p class="teste">Mais uma linha pro mato</p></section>
+    <p id="trocarporid">Outra linha</p>
+    <p class="trocarporclass">A penúltima linha</p>
+    <p class="trocarporclass">A última linha</p>
+    <script>
+        var corpo = window.document.body
+        corpo.style.backgroundColor = 'black'
+        var p1 = window.document.getElementsByTagName('p')[1]
+        window.document.write('Está escrito assim: '+ p1.innerText + '<br/>')
+        window.document.write('Agora com HTML: ' + p1.innerHTML)
+        p1.style.color = 'blue'
+        var d = window.document.getElementById('msg')
+        d.style.background = 'green'
+        d.innerText = 'Texto modificado 1' //sobreposto pelo texto modificado 3
+        window.document.getElementById('msg').innerText = 'Texto modificado 2' //sobreposto pelo texto modificado 3
+        d.innerText = 'Texto modificado 3'
+        var k= window.document.getElementsByClassName('teste')[0]
+        k.innerText = 'Texto modificado 4'
+        var m = window.document.querySelector('p#trocarporid')
+        m.innerText = 'Texto modificado 5'
+        var n = window.document.querySelectorAll('p.trocarporclass')
+        n.forEach(i => {
+            i.innerText = 'Texto modificado 6'
+            i.style.background = 'blue'
+        }
+        )
+        
+    </script>
+</body>
+</html>

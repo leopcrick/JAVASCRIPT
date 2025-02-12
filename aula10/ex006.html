@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        div#area{
+            background-color: green;
+            font: normal 20pt Arial;
+            color: white;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="area"> <!-- MÉTODO 1: onmousedown="clicar()" onmouseup="desclicar()" onmouseenter="entrar()" onmouseout="sair()" -->
+        Interja...
+    </div>
+
+    <script>
+/*      MÉTODO 1
+        function clicar(){
+            var a = window.document.getElementById('area')
+            a.innerText = 'Clicou'
+            a.style.background = 'red'
+        }
+        function desclicar(){
+            var b = window.document.getElementById('area')
+            b.innerText = 'Desclicou'
+        }
+        function entrar(){
+            var c = window.document.getElementById('area')
+            c.innerText = 'Entrou'
+        }
+        function sair(){
+            var d = window.document.getElementById('area')
+            d.innerText = 'Saiu'
+            d.style.background = 'green'
+        } */
+       var a = window.document.getElementById('area')
+       a.addEventListener('click', desclicar)
+       a.addEventListener('mousedown', clicar)
+       a.addEventListener('mouseenter', entrar)
+       a.addEventListener('mouseout', sair)
+
+       function clicar(){
+        a.innerText = 'Clicou'
+        a.style.background = 'red'
+       }
+       function desclicar(){
+        a.innerText = 'Desclicou'
+       }
+       function entrar(){
+        a.innerText = 'Entrou'
+       }
+       function sair(){
+        a.innerText = 'Saiu'
+        a.style.background = 'green'
+       }
+    </script>
+</body>
+</html>

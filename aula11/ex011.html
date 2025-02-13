@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nacionalidade</title>
+</head>
+<body>
+    <h1>Verificação de Nacionalidade</h1>
+    <label for="inacionalidade">Onde você nasceu: </label>
+    <input type="text" name="nacionalidade" id="inacionalidade">
+    <input type="submit" value="Enviar" onclick="verificar()">
+    <div class="resultado"></div>
+
+    <script>
+        function verificar(){
+            var nacionalidade = window.document.getElementById('inacionalidade')
+            var resultado = window.document.getElementsByClassName('resultado')[0]
+            if (nacionalidade.value == 'Brasil'){
+                resultado.innerHTML = 'Muito bom'
+                document.body.style.background = 'green'
+            } else {
+                resultado.innerHTML = '<p>Muito ruim</p>'
+                document.body.style.background = 'red'
+            }
+        }
+    </script>
+</body>
+</html>

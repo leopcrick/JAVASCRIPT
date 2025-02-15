@@ -10,6 +10,7 @@ const rl = readline.createInterface({
 var n = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 var xouzero = 'X'
 var teste = false
+var cont = 0
 
 
 //FUNÇÃO PARA EXIBIR A MATRIZ
@@ -34,14 +35,24 @@ function verificacao(jogada){
 
 //FUNÇÃO PARA CONTINUAR OU PARAR O JOGO
 function verificar(){
-    for (i=0 ; i<3 ; i++){
+    for (i=0 ; i<7 ; i+=3){
         if (n[i] == n[i+1] && n[i+1] == n[i+2] && n[i+2] == xouzero){
             teste = true
-        }
+        } 
+    }
+    for (i=0 ; i<3 ; i++){
         if (n[i] == n[i+3] && n[i+3] == n[i+6] && n[i+6] == xouzero){
             teste = true
-        } else {
-        }
+        } 
+    }
+    if (n[0] == n[4] && n[4] == n[8] && n[8] == xouzero){
+        teste = true
+    }
+    if (n[2] == n[4] && n[4] == n[6] && n[6] == xouzero){
+        teste = true
+    }
+    if (cont == 8){
+        teste = true
     }
     return teste
 }
@@ -64,7 +75,6 @@ function jogar(){
         if (verificacao(jogada)){
             jogada = Number(jogada) - 1
             n[jogada] = xouzero
-            xouzero = xouzero == 'X' ? 'O' : 'X'
         } else {
             console.log("ERRO DE DIGITAÇÃO, REPITA UM COMANDO VÁLIDO")
         }
@@ -74,6 +84,8 @@ function jogar(){
             console.log("FIM DE JOGO, TEMOS UM VENCEDOR")
             rl.close();
         } else {
+            xouzero = xouzero == 'X' ? 'O' : 'X'
+            cont++
             jogar()
         }
     });

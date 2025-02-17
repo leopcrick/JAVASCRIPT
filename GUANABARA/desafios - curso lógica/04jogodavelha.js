@@ -66,6 +66,7 @@ function parar(){
 
 console.log()
 
+//CÓDIGO GERAL DO JOGO
 function jogar(){
     exibirmatriz()
     rl.question(`Vai jogar ${xouzero} em qual posição?? `, (jogada) => {

@@ -1,5 +1,5 @@
 var dimensaomatriz = 4
-var menu = 4
+var menu = 2
 //1-> Mostrar matriz completa
 //2-> Diagonal Principal
 //3-> Triangulo Superior

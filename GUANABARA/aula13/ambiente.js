@@ -4,3 +4,5 @@ while (c <= 1000){
     console.log(`Tudo bem? ${c}`)
     c++
 }
+
+console.log(c)

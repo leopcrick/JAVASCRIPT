@@ -23,6 +23,7 @@ mapa.delete(3)
 caixa3.innerHTML = "O tamanho da coleção é " + mapa.size
 
 mapa.forEach((elemento)=>{
+    console.log("Ola")
     console.log(elemento)
 })
 

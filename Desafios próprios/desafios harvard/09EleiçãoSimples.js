@@ -46,6 +46,7 @@ function verificarVoto(votoEleitor){
 
 //PASSO 1: RECEBER NOME DOS CANDIDATOS
 function passo1(){
+    console.log("-------------------------------------------------------")
     rl.question('Digite o nome dos candidatos separado por espaço: ', (inputUsuario) => {
         input = inputUsuario
         if (verificarNomes(input)){
@@ -56,6 +57,7 @@ function passo1(){
         } else {
             process.stdout.write("Precisa-se de pelo menos dois nomes, sem números.")
             console.log("Tente novamente.")
+            console.log("")
             passo1()
         }
     });
@@ -87,8 +89,7 @@ async function passo3(){
     for (elemento of candidatos){
         candidatosMAP.set(elemento, qntVotos)
     }
-    console.log("--------------------")
-    console.log(candidatosMAP)
+    console.log("-------------------------------------------------------")
     console.log("LISTA DE CANDIDATOS:")
     for (i=1 ; i<=candidatos.length ; i++){
         console.log(`Candidato ${i}: ${candidatos[i-1]}`)
@@ -98,16 +99,48 @@ async function passo3(){
         const inputUsuario = await questionAsync(`Eleitor ${i+1} - digite o número do candidato para votar: `)
         const votoEleitor = Number(inputUsuario)
         if (verificarVoto(votoEleitor)){
-            console.log("Número de eleitores definido com sucesso!")
             candidatosMAP.set(candidatos[votoEleitor-1], candidatosMAP.get(candidatos[votoEleitor-1])+1)
         } else {
-            console.log("Sempre digite um número de candidato válido.")
+            console.log("O número de candidato digitado é inválido.")
             console.log("A votação será reiniciada.")
+            console.log("")
             passo3()
         }
     }
     rl.close();
-    console.log(candidatosMAP)
+    passo4()
+}
+
+
+
+//PASSO 4: VERIFICAR QUEM TEM MAIS VOTOS
+function passo4(){
+    let vencedorCandidato
+    let vencedorVotos = 0
+    candidatosMAP.forEach((valor, chave)=>{ //deifinir quem recebeu mais voto
+        if (valor > vencedorVotos){
+            vencedorVotos = valor
+            vencedorCandidato = chave
+        }
+    })
+
+
+    let contador = 0
+    candidatosMAP.forEach((valor)=>{ //deifinir se teve empate ou não
+        if (valor = vencedorVotos){
+            contador++
+        }
+    })
+    if (contador>1){
+        console.log("")
+        console.log("-------------------------------------------------------")
+        console.log("Temos um empate!!!")
+    } else {
+        console.log("")
+        console.log("-------------------------------------------------------")
+        console.log("Temos um vencedor!!!")
+        console.log(`O vencedor é ${vencedorCandidato} com ${vencedorVotos} votos!!`)
+    }
 }
 
 passo1()

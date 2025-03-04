@@ -53,6 +53,7 @@ function passo1(){
             console.log("Candidatos definidos com sucesso!")
             console.log("")
             candidatos = input.trim().split(" ").filter(nome => nome !== "") //SEPARAR NOMES
+            console.log(candidatos)
             passo2()
         } else {
             process.stdout.write("Precisa-se de pelo menos dois nomes, sem números.")

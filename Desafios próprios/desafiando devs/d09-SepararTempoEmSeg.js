@@ -6,8 +6,17 @@ const rl = readline.createInterface({
 });
 
 //FUNÇÃO VERIFICAR
-function verificar(){
-    if (1==1){
+function verificar(input){
+    let suporte = input.split(":");
+    if (input.length!=8 || suporte.length!=3){
+        return false
+    } else if (Number(suporte[1]>60)){
+        return false
+    } else if (Number(suporte[2]>60)){
+        return false
+    } else if (!/^\d{2}$/.test(suporte[0]) || !/^\d{2}$/.test(suporte[1]) || !/^\d{2}$/.test(suporte[2])) {
+        return false
+    } else {
         return true
     }
 }
@@ -41,3 +50,4 @@ function rodar(){
 rodar()
 
 //TEMPO: 15minutos sem verificação
+//TEMPO: 30minutos total com verificação

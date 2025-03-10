@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio - Carros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="campos">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" name="inome" id="inome" required minlength="1">
+        </div>
+        <div>
+            <label for="portas">Portas:</label>
+            <input type="number" name="iportas" id="iportas" placeholder="0" required min="1">
+        </div>
+        <div>
+            <label for="blindagem">Blindagem:</label>
+            <input type="number" name="iblindagem" id="iblindagem" placeholder="0" disabled>
+        </div>
+        <div>
+            <label for="municao">Municao:</label>
+            <input type="number" name="imunicao" id="imunicao" placeholder="0" disabled>
+        </div>
+        <div>
+            <label>Tipo: </label>
+            <div>
+                <input required type="radio" name="tipo" id="ipasseio" value="Passeio" checked> <label for="ipasseio">Passeio</label>
+                <input required type="radio" name="tipo" id="imilitar" value="Militar"> <label for="imilitar">Militar</label>
+            </div>
+        </div>
+        <div>
+            <button id="btn_add">Adicionar</button>
+        </div>
+    </div>
+    <div id="carrosAdicionados"></div>
+    <script src="ambiente.js"></script>
+</body>
+</html>

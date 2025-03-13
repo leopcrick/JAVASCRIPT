@@ -7,6 +7,8 @@ botaoNumerico.forEach((elemento)=>{
     elemento.addEventListener("click", (evt)=>{
         if(visor.textContent==0){
             visor.innerHTML=elemento.innerHTML
+        } else if(visor.textContent.endsWith(")")){
+
         } else {
             visor.innerHTML+=elemento.innerHTML
         }
@@ -14,12 +16,17 @@ botaoNumerico.forEach((elemento)=>{
 })
 
 
-//ADICIONA OS OPERADORES ----------------------------------------- FALTA VERIFICAR TUDO
+//ADICIONA OS OPERADORES ---------------------------------------
 const operador = [...document.querySelectorAll(".operador")]
 operador.forEach((elemento)=>{
     elemento.addEventListener("click", (evt)=>{
         if(visor.textContent==0){
             visor.innerHTML=elemento.innerHTML
+        } else if(visor.textContent.slice(-1)==elemento.innerHTML){
+
+        } else if(visor.textContent.endsWith("+") || visor.textContent.endsWith("-") || visor.textContent.endsWith("*") || visor.textContent.endsWith("/")){
+            visor.innerHTML=visor.textContent.slice(0, -1)
+            visor.innerHTML+=elemento.innerHTML
         } else {
             visor.innerHTML+=elemento.innerHTML
         }
@@ -34,6 +41,8 @@ const abreParenteses = document.querySelector("#abreParenteses")
 abreParenteses.addEventListener("click", (evt)=>{
     if(visor.textContent==0){
         visor.innerHTML=abreParenteses.innerHTML
+    } else if(!visor.textContent.endsWith("+") && !visor.textContent.endsWith("-") && !visor.textContent.endsWith("*") && !visor.textContent.endsWith("/") && !visor.textContent.endsWith("(")){
+        
     } else {
         visor.innerHTML+=abreParenteses.innerHTML
     }
@@ -68,3 +77,8 @@ const fazerConta = document.querySelector("#fazerConta")
 fazerConta.addEventListener("click", (evt)=>{
     visor.innerHTML=eval(visor.innerHTML)
 })
+
+
+//ADICIONAR VÍRGULA
+
+//COLOCAR NÚMEROS NO TECLADO

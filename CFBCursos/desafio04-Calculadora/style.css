@@ -15,7 +15,7 @@ body {
 div#calculadora{
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.5);
-    width: clamp(150px, 50vw, 300px);
+    width: clamp(250px, 50vw, 300px);
     height: clamp(300px, 70vh, 600px);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -61,4 +61,8 @@ div#calculadora > div:active{
 div#visor:active{
     border: 1px solid rgba(0, 0, 0, 0.5) !important;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+}
+
+.botaoNumerico, #virgula, #visor, #zerar, #fazerConta{
+    background-color: lightskyblue !important;
 }

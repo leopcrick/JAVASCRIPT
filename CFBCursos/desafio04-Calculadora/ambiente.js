@@ -1,4 +1,5 @@
 const visor = document.querySelector("#pvisor")
+let resultado = 0
 let resultadoRecente = false
 
 
@@ -86,6 +87,7 @@ fechaParenteses.addEventListener("click", (evt)=>{
 const zerar = document.querySelector("#zerar")
 zerar.addEventListener("click", (evt)=>{
     visor.innerHTML="0"
+    resultado = 0
     resultadoRecente = false
 })
 
@@ -94,10 +96,16 @@ const deletar = document.querySelector("#deletar")
 deletar.addEventListener("click", (evt)=>{
     if (resultadoRecente == true){
         visor.textContent = "0"
+        resultado = 0
     } else if(visor.textContent.length>1){
-        visor.textContent = visor.textContent.slice(0, -1)
+        if(visor.textContent.endsWith("w")){
+            visor.textContent = visor.textContent.slice(0, -4)
+        } else {
+            visor.textContent = visor.textContent.slice(0, -1)
+        }
     } else {
         visor.textContent = "0"
+        resultado = 0
     }
 })
 
@@ -105,7 +113,11 @@ deletar.addEventListener("click", (evt)=>{
 //FAZER CONTA ------------------------------------------------
 const fazerConta = document.querySelector("#fazerConta")
 fazerConta.addEventListener("click", (evt)=>{
+    if (visor.innerHTML.includes("Answ")) {
+        visor.innerHTML = visor.innerHTML.replace(/Answ/g, resultado)
+    }
     visor.innerHTML=eval(visor.innerHTML)
+    resultado = eval(visor.innerHTML)
     resultadoRecente = true
 })
 
@@ -121,6 +133,18 @@ virgula.addEventListener("click", (evt)=>{
     resultadoRecente = false
 })
 
+
+//ADICIONAR ANSWER
+const answer = document.querySelector("#resultado")
+answer.addEventListener("click", (evt)=>{
+    if(visor.textContent==0){
+        visor.innerHTML=0
+    } else if(visor.textContent.endsWith("+") ||visor.textContent.endsWith("-") || visor.textContent.endsWith("/") || visor.textContent.endsWith("*") || visor.textContent.endsWith("(") ){
+        visor.innerHTML+=answer.innerHTML
+        resultadoRecente = false
+    } else {
+    }
+})
 
 
 

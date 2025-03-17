@@ -40,12 +40,20 @@ div#visor{
     cursor: text !important;
     display: flex;
     align-items: flex-start;
-    text-align: right;
+    justify-content: space-between;
 }
-div#visor p{
-    width: 100%;
+div#visor p#pvisor{
+    width: auto;
+    flex-grow: 1; /* Ocupa o espaço restante */
     padding: 0px;
     margin: 0px 10px 0px 0px;
+    text-align: right;
+}
+div#visor p#copy{
+    color: lightslategray;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
 div#calculadora > div:hover{

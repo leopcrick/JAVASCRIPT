@@ -195,3 +195,20 @@ document.addEventListener("keydown", (evt) => { // Adiciona o evento keydown ao 
         }
     }
 })
+
+
+
+
+//BOTÃO DE COPIAR - FEITO COM IA
+// Seleciona o elemento #copy
+const botaoCopiar = document.querySelector("#copy");
+botaoCopiar.addEventListener("click", () => {
+    // Usa a API de Clipboard para copiar o texto
+    navigator.clipboard.writeText(visor.innerHTML)
+        .then(() => {
+            botaoCopiar.textContent = "Copiado!";
+            setTimeout(() => {
+                botaoCopiar.textContent = "copy";
+            }, 2000); // Volta ao texto original após 2 segundos
+        })
+})

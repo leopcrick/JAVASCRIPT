@@ -75,7 +75,7 @@ const fechaParenteses = document.querySelector("#fechaParenteses")
 fechaParenteses.addEventListener("click", (evt)=>{
     if (visor.textContent.slice(-1)=="+" || visor.textContent.slice(-1)=="-" || visor.textContent.slice(-1)=="/" || visor.textContent.slice(-1)=="*"){
     } else if(visor.textContent.split("(").length-1>visor.textContent.split(")").length-1){
-        if (visor.textContent.slice(-1)=="("){
+        if (visor.textContent.endsWith("(")){
             visor.innerHTML+="0"
         }
         visor.innerHTML+=fechaParenteses.innerHTML
@@ -113,6 +113,13 @@ deletar.addEventListener("click", (evt)=>{
 //FAZER CONTA ------------------------------------------------
 const fazerConta = document.querySelector("#fazerConta")
 fazerConta.addEventListener("click", (evt)=>{
+    const fechaParenteses = document.querySelector("#fechaParenteses")
+    if (visor.textContent.endsWith("(")){
+        visor.innerHTML+="0"
+    }
+    for (i=visor.textContent.split(")").length ; visor.textContent.split("(").length > i ; i++){
+        visor.innerHTML+=fechaParenteses.innerHTML
+    }
     if (visor.innerHTML.includes("Answ")) {
         visor.innerHTML = visor.innerHTML.replace(/Answ/g, resultado)
     }
